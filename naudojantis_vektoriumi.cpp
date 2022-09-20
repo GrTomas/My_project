@@ -23,14 +23,14 @@ struct duom {
 duom ivedimas(int a);
 double galutinis_pagal_vidurki(vector<int> paz);
 double galutinis_pagal_mediana(vector<int> paz);
-void isvedimas(duom temp);
+void isvedimas(duom temp[], int studentai, string pasirinkimas);
 
 int main() {
 
     int studentai;
-    cout << "Iveskite studentu kieki: ";
+    cout << "Iveskite studentu kieki (iki 100): ";
     cin >> studentai;
-    while (cin.fail() || studentai < 1) {
+    while (cin.fail() || studentai < 1 || studentai > 100) {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         cout << "Neteisinga reiksme" << endl;
@@ -46,8 +46,7 @@ int main() {
         }
     }
 
-    duom* stud;
-    stud = new duom[studentai];
+    duom stud[100];
 
     for (int z = 0; z < studentai; z++) {
         duom studentas;
@@ -61,13 +60,12 @@ int main() {
         }
         stud[z] = studentas;
     }
-    cout << std::left << std::setw(20) << "Vardas" << std::left << std::setw(20) << "Pavarde";
-    cout << std::right << std::setw(5) << "Galutinis (" << pasirinkimas << ")" << endl;
-    cout << "---------------------------------------------------------" << endl;
-    for (int z = 0; z < studentai; z++) {
-        isvedimas(stud[z]);
-    }
+    
+    isvedimas(stud, studentai, pasirinkimas);
+    return 0;
 }
+    
+
 
 duom ivedimas(int a) {
     duom asmuo;
@@ -131,7 +129,7 @@ duom ivedimas(int a) {
             }
         }
     }
-    cout << "-------------------------" << endl;
+    cout << "--------------------------------------------------------------" << endl;
     return asmuo;
 
 }
@@ -150,7 +148,6 @@ double galutinis_pagal_vidurki(vector<int> paz) {
 double galutinis_pagal_mediana(vector<int> paz) {
 
     std::sort(paz.begin(), paz.end());
-    cout << paz.size() << endl;
     if (paz.size() % 2 == 0 && paz.size() != 0) {
         return (double)(paz[paz.size()/2] + paz[(paz.size() - 1) / 2]) / 2.0;
     }
@@ -167,7 +164,13 @@ double galutinis_pagal_mediana(vector<int> paz) {
 
     }
 }
-void isvedimas(duom temp) {
-    cout << std::left << std::setw(20) << temp.vardas << std::left << std::setw(20) << temp.pavarde;
-    cout << std::right << std::fixed << std::setprecision(2) << std::setw(5) << temp.galutinis << endl;
+void isvedimas(duom temp[], int studentai, string pasirinkimas) {
+    
+    cout << std::left << std::setw(20) << "Vardas" << std::left << std::setw(20) << "Pavarde";
+    cout << std::right << std::setw(5) << "Galutinis (" << pasirinkimas << ")" << endl;
+    cout << "--------------------------------------------------------------" << endl;
+    for (int z = 0; z < studentai; z++) {
+        cout << std::left << std::setw(20) << temp[z].vardas << std::left << std::setw(20) << temp[z].pavarde;
+        cout << std::right << std::fixed << std::setprecision(2) << std::setw(5) << temp[z].galutinis << endl;
+    }
 }
