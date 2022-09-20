@@ -61,6 +61,7 @@ int main() {
         stud[z] = studentas;
     }
   isvedimas(stud, studentai, pasirinkimas);
+  return 0;
 }
 
 duom ivedimas(int a, int& m) {
