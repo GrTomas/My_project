@@ -4,31 +4,33 @@
 #include <vector>
 #include <iomanip>
 #include <algorithm>
+#include <numeric>
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
+using std::vector;
 
 struct duom {
     string vardas;
     string pavarde;
-    int* paz;
+    vector<int> paz;
     int egz;
     double galutinis;
 };
 
-duom ivedimas(int a, int& m);
-double galutinis_pagal_vidurki(int* paz, int m);
-double galutinis_pagal_mediana(int* paz, int m);
-void isvedimas(duom temp);
+duom ivedimas(int a);
+double galutinis_pagal_vidurki(vector<int> paz);
+double galutinis_pagal_mediana(vector<int> paz);
+void isvedimas(duom temp[], int studentai, string pasirinkimas);
 
 int main() {
 
     int studentai;
-    cout << "Iveskite studentu kieki: ";
+    cout << "Iveskite studentu kieki (iki 100): ";
     cin >> studentai;
-    while (cin.fail() || studentai < 1) {
+    while (cin.fail() || studentai < 1 || studentai > 100) {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         cout << "Neteisinga reiksme" << endl;
@@ -44,49 +46,39 @@ int main() {
         }
     }
 
-    duom* stud;
-    stud = new duom[studentai];
+    duom stud[100];
 
     for (int z = 0; z < studentai; z++) {
         duom studentas;
         int m;
-        studentas = ivedimas(z, m);
+        studentas = ivedimas(z);
         if (pasirinkimas == "vidurkis") {
-            studentas.galutinis = galutinis_pagal_vidurki(studentas.paz, m) * 0.4 + studentas.egz * 0.6;
-            delete[] studentas.paz;
+            studentas.galutinis = galutinis_pagal_vidurki(studentas.paz) * 0.4 + studentas.egz * 0.6;
         }
         else {
-            studentas.galutinis = galutinis_pagal_mediana(studentas.paz, m) * 0.4 + studentas.egz * 0.6;
-            delete[] studentas.paz;
+            studentas.galutinis = galutinis_pagal_mediana(studentas.paz) * 0.4 + studentas.egz * 0.6;
         }
         stud[z] = studentas;
     }
-    cout << std::left << std::setw(20) << "Vardas" << std::left << std::setw(20) << "Pavarde";
-    cout << std::right << std::setw(5) << "Galutinis (" << pasirinkimas << ")" << endl;
-    cout << "---------------------------------------------------------" << endl;
-    for (int z = 0; z < studentai; z++) {
-        isvedimas(stud[z]);
-    }
-    delete[] stud;
+    
+    isvedimas(stud, studentai, pasirinkimas);
+    return 0;
 }
+    
 
-duom ivedimas(int a, int& m) {
+
+duom ivedimas(int a) {
     duom asmuo;
+    int ivertinimu_sk;
     cout << "Iveskite " << a + 1 << " studento  varda: "; cin >> asmuo.vardas;
     cout << "Iveskite " << a + 1 << " studento  pavarde: "; cin >> asmuo.pavarde;
-    int ivertinimu_sk = 0;
-    int ivertinimas;
     string dadejimas = " ";
     string ats = " ";
     while (ats != "taip" && ats != "ne") {
         cout << "Ar norite kad visi ivertinimai butu atsitiktiniai? ";
         cin >> ats;
-      if (ats != "taip" && ats != "ne"){
-        cout << "Neteisingai ivestas zodis." << endl;
-      }
     }
     if (ats == "ne") {
-        asmuo.paz = new int[0];
         cout << "Iveskite " << a + 1 << " studento  egzamino ivertinima: "; cin >> asmuo.egz;
         while (cin.fail() || (asmuo.egz < 1 || asmuo.egz > 10)) {
             cin.clear();
@@ -100,16 +92,20 @@ duom ivedimas(int a, int& m) {
 
             cout << "Ar norite prideti namu darbu ivertinima (Taip, Ne)?"; cin >> dadejimas;
             if (dadejimas == "taip" || dadejimas == "TAIP" || dadejimas == "Taip") {
-                cout << "Iveskite namu darbu ivertinima: ";
-                cin >> asmuo.paz[ivertinimu_sk];
-                while (cin.fail() || (asmuo.paz[ivertinimu_sk] < 1 || asmuo.paz[ivertinimu_sk] > 10)) {
+                int ivertinimas = 0;
+                while (cin.fail() || ivertinimas < 1 || ivertinimas > 10) {
                     cin.clear();
                     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                    cout << "Neteisinga reiksme" << endl;
                     cout << "Iveskite namu darbu ivertinima: ";
-                    cin >> asmuo.paz[ivertinimu_sk];
+                    cin >> ivertinimas;
+                    if (cin.fail() || ivertinimas < 1 || ivertinimas > 10){
+                        cout << "Neteisinga reiksme" << endl;
+                    }
+                    else{
+                        asmuo.paz.push_back(ivertinimas);
+                    }
                 }
-                ivertinimu_sk++;
+                
             }
             if (dadejimas != "ne" and dadejimas != "taip") {
                 cout << "Neteisingai ivestas zodis" << endl;
@@ -121,61 +117,60 @@ duom ivedimas(int a, int& m) {
         srand(time(0));
         asmuo.egz = rand() % 10 + 1;
         cout << "Atsitiktinis egzamino ivertinimas yra: " << asmuo.egz << endl;
-        asmuo.paz = new int[0];
-
         while (dadejimas != "ne" && dadejimas != "Ne" && dadejimas != "NE") {
-
             cout << "Ar norite prideti namu darbu ivertinima (Taip, Ne)?"; cin >> dadejimas;
             if (dadejimas == "taip" || dadejimas == "TAIP" || dadejimas == "Taip") {
-                asmuo.paz[ivertinimu_sk] = rand() % 10 + 1;
-                cout << "Atsitiktinis namu darbu ivertinimas yra: " << asmuo.paz[ivertinimu_sk] << endl;
-                ivertinimu_sk++;
+                int ivertinimas = rand() % 10 + 1;
+                asmuo.paz.push_back(ivertinimas);
+                cout << "Atsitiktinis namu darbu ivertinimas yra: " << ivertinimas << endl;
             }
             if (dadejimas != "ne" and dadejimas != "taip") {
                 cout << "Neteisingai ivestas zodis" << endl;
             }
         }
     }
-    cout << "-------------------------" << endl;
-    m = ivertinimu_sk;
+    cout << "--------------------------------------------------------------" << endl;
     return asmuo;
 
 }
 
-double galutinis_pagal_vidurki(int* paz, int m) {
+double galutinis_pagal_vidurki(vector<int> paz) {
 
-    double galutine_suma = 0;
-    for (int i = 0; i < m; i++) {
-        galutine_suma = galutine_suma + paz[i];
-    }
-    if (m != 0 && m != 1) {
-        return (double)galutine_suma / m;
+    double galutine_suma = std::accumulate(paz.begin(),paz.end(),0);
+    if (paz.size() != 0) {
+        return (double)galutine_suma / paz.size();
     }
     else {
         return 0;
     }
 }
 
-double galutinis_pagal_mediana(int* paz, int m) {
+double galutinis_pagal_mediana(vector<int> paz) {
 
-    std::sort(paz, paz + m + 1);
-    if (m % 2 == 0) {
-        return (double)(paz[(m) / 2] + paz[(m - 1) / 2]) / 2.0;
+    std::sort(paz.begin(), paz.end());
+    if (paz.size() % 2 == 0 && paz.size() != 0) {
+        return (double)(paz[paz.size()/2] + paz[(paz.size() - 1) / 2]) / 2.0;
     }
-    if (m == 0) {
+    if (paz.size() <= 0) {
         return 0;
     }
     else {
-        if (m == 1) {
-            return (double)paz[m];
+        if (paz.size() == 1) {
+            return (double)paz[0];
         }
         else {
-            return (double)paz[(m+1) / 2];
+            return (double)paz[paz.size() / 2];
         }
 
     }
 }
-void isvedimas(duom temp) {
-    cout << std::left << std::setw(20) << temp.vardas << std::left << std::setw(20) << temp.pavarde;
-    cout << std::right << std::fixed << std::setprecision(2) << std::setw(5) << temp.galutinis << endl;
+void isvedimas(duom temp[], int studentai, string pasirinkimas) {
+    
+    cout << std::left << std::setw(20) << "Vardas" << std::left << std::setw(20) << "Pavarde";
+    cout << std::right << std::setw(5) << "Galutinis (" << pasirinkimas << ")" << endl;
+    cout << "--------------------------------------------------------------" << endl;
+    for (int z = 0; z < studentai; z++) {
+        cout << std::left << std::setw(20) << temp[z].vardas << std::left << std::setw(20) << temp[z].pavarde;
+        cout << std::right << std::fixed << std::setprecision(2) << std::setw(5) << temp[z].galutinis << endl;
+    }
 }
