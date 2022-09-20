@@ -144,6 +144,9 @@ double galutinis_pagal_vidurki(int* paz, int m) {
     if (m != 0 && m != 1) {
         return (double)galutine_suma / m;
     }
+    if (m == 1){
+        return galutine_suma;
+    }
     else {
         return 0;
     }
@@ -152,8 +155,9 @@ double galutinis_pagal_vidurki(int* paz, int m) {
 double galutinis_pagal_mediana(int* paz, int m) {
 
     std::sort(paz, paz + m + 1);
-    if (m % 2 == 0) {
-        return (double)(paz[(m) / 2] + paz[(m - 1) / 2]) / 2.0;
+    cout << m << endl;
+    if (m % 2 == 0 && m != 0) {
+        return (double)(paz[(m) / 2] + paz[(m) / 2 + 1]) / 2.0;
     }
     if (m == 0) {
         return 0;
