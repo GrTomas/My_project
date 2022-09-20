@@ -149,7 +149,7 @@ double galutinis_pagal_mediana(vector<int> paz) {
 
     std::sort(paz.begin(), paz.end());
     if (paz.size() % 2 == 0 && paz.size() != 0) {
-        return (double)(paz[paz.size()/2] + paz[(paz.size() - 1) / 2]) / 2.0;
+        return (double)(paz[paz.size()/2] + paz[paz.size() / 2 - 1]) / 2.0;
     }
     if (paz.size() <= 0) {
         return 0;
