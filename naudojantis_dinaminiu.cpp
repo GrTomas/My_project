@@ -156,7 +156,6 @@ double galutinis_pagal_vidurki(int* paz, int m) {
 double galutinis_pagal_mediana(int* paz, int m) {
 
     std::sort(paz, paz + m + 1);
-    cout << m << endl;
     if (m % 2 == 0 && m != 0) {
         return (double)(paz[(m) / 2] + paz[(m) / 2 + 1]) / 2.0;
     }
