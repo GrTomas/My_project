@@ -40,9 +40,9 @@ int main() {
     }
 
     string pasirinkimas = " ";
-    while (pasirinkimas != "vidurkis" && pasirinkimas != "mediana") {
+    while (pasirinkimas != "vidurkis" && pasirinkimas != "VIDURKIS" && pasirinkimas !="Vidurkis" && pasirinkimas != "mediana" && pasirinkimas != "MEDIANA" && pasirinkimas != "Mediana") {
         cout << "Pagal ka noresite, kad butu skaiciuojamas galutinis balas (vidurkis, mediana)? "; cin >> pasirinkimas;
-        if (pasirinkimas != "vidurkis" && pasirinkimas != "mediana") {
+        if (pasirinkimas != "vidurkis" && pasirinkimas != "VIDURKIS" && pasirinkimas !="Vidurkis" && pasirinkimas != "mediana" && pasirinkimas != "MEDIANA" && pasirinkimas != "Mediana") {
             cout << "Neteisingai ivestas zodis." << endl;
         }
     }
@@ -53,7 +53,7 @@ int main() {
         duom studentas;
         int m;
         studentas = ivedimas(z);
-        if (pasirinkimas == "vidurkis") {
+        if (pasirinkimas == "vidurkis" && pasirinkimas == "VIDURKIS" && pasirinkimas =="Vidurkis") {
             studentas.galutinis = galutinis_pagal_vidurki(studentas.paz) * 0.4 + studentas.egz * 0.6;
         }
         else {
