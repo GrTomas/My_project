@@ -76,7 +76,7 @@ duom ivedimas(int a) {
     string dadejimas = " ";
     string ats = " ";
     while (ats != "taip" && ats != "ne") {
-        cout << "Ar norite kad visi ivertinimai butu atsitiktiniai? ";
+        cout << "Ar norite kad visi ivertinimai butu atsitiktiniai (taip, ne)? ";
         cin >> ats;
     }
     if (ats == "ne") {
