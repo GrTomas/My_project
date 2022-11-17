@@ -1,1 +1,3 @@
-# My_project
+# v0.2
+
+v0.2 programos versija papildo v0.1 programą tuo, kad visi vartotojo duomenys gali būti paimami iš failo ir rezultatai išvedami į kitą failą. Pirmiausiai vartotojo yra paklausiama ar jis nori duomenis įvesti ranka, ar imti juos iš failo ir pasirinkęs iš failo, vartotojas turi įvesti failo vardą. Failas tada yra nuskaitomas ir rezultato faile yra išvedami visų studentų vardai, pavardės, galutiniai rezultatai skaičiuoti pagal vidurkį ir galutiniai rezultatai skaičiuoti naudojantis mediana. Taip pat nuo šios programos versijos, funkcijos yra išskaidytos per kelis cpp failus ir sukurti header failai, o taip pat yra gaudomos vartotojo įvedime atliekamos klaidos naudojantis išimčių valdymu.
