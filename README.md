@@ -45,9 +45,10 @@ Duomenų kiekis | Pirmoji strategija | Antroji strategija | Trečioji strategija
 1000           |      0.0128781     |     0.108993       |      0.0090386       |       
 10000          |      0.146756      |     10.3373        |      0.108304        |   
 100000         |      1.56781       |     1340.93        |      1.23758         |  
-1000000        |      16.4427       |        -           |      11.4213         |  
-10000000       |      194.89        |        -           |      135.975         |   
+1000000        |      16.4427       |        - [^1]      |      11.4213         |  
+10000000       |      194.89        |        - [^1]      |      135.975         |   
 
+[^1]: Iš pirmųjų antrosios strategijų rezultatų galima matyti, kad padidinus duomenų kiekį dešimt kartų, laikas pailgėja apie 100 kartu, tai reiškia, kad rūšiavimas ir dalijimas su milijonu duomenų užtruktų ne mažiau nei 30 valandų, todėl tikslūs laikai lentelėje nėra pateikti.
 
 Šioje lentelėje yra pateikiamos laiko informacijos, kiek užtrunka surūšiuoti duomenis ir jiems pritaikyti vieną iš strategijų naudojant list konteinerį.
 
@@ -60,8 +61,8 @@ Duomenų kiekis | Pirmoji strategija | Antroji strategija |
 1000000        |     7.28904        |      3.63578       |            
 10000000       |     169.19         |      42.3387       |       
 
----
-* Iš pirmosios lentelės galime lyginti strategijų laikus vector konteineryje. Paleidus programą, pirmoji strategija pareikalavo daug didesnio kiekio operatyviosios atminties, bet ji buvo daug greitesnė už antrąją strategiją. Antroji strategija nors ir užima mažiau atminties, ji trunka labai ilgai, nes trinant kiekvieną elementą, visus likusius vektoriaus elementus reikia nukopijuoti ir perkelti į šoną, kas ilgai užtrunka. Iš pirmųjų antrosios strategijų rezultatų galima matyti, kad padidinus duomenų kiekį dešimt kartų, laikas pailgėja apie 100 kartu, tai reiškia, kad rūšiavimas ir dalijimas su milijonu duomenų užtruktų ne mažiau nei 30 valandų, todėl tikslūs laikai lentelėje nėra pateikti. Trečioji strategija apjungia pirmąją ir antrąją, todėl, nes ji yra greita kaip pirmoji strategija ir taip pat užima mažiau operatyviosios atminties kaip antroji strategija. Pagal rezultatus galime matyti, kad ši strategija vector konteineriui yra pati greičiausia.
+
+* Iš pirmosios lentelės galime lyginti strategijų laikus vector konteineryje. Paleidus programą, pirmoji strategija pareikalavo daug didesnio kiekio operatyviosios atminties, bet ji buvo daug greitesnė už antrąją strategiją. Antroji strategija nors ir užima mažiau atminties, ji trunka labai ilgai, nes trinant kiekvieną elementą, visus likusius vektoriaus elementus reikia nukopijuoti ir perkelti į šoną, kas ilgai užtrunka. Trečioji strategija apjungia pirmąją ir antrąją, todėl, nes ji yra greita kaip pirmoji strategija ir taip pat užima mažiau operatyviosios atminties kaip antroji strategija. Pagal rezultatus galime matyti, kad ši strategija vector konteineriui yra pati greičiausia.
 
 * Iš antros lentelės galime palyginti pirmąją ir antrąją strategiją. Pirmoji strategija užėmė daugiau atminties ir buvo lėtesnė už antrąją strategiją, todėl ši strategija yra prastesnė list duomenų konteineriui. Antroji strategija yra daug optimalesnė, ji yra daug greitesnė, o taip pat ir užimanti mažiau operatyviosios atminties.
 
