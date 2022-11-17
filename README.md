@@ -161,6 +161,7 @@ Failo is 1000000 irasu nuskaitymo laikas : 38.8554
 Failo is 10000000 irasu nuskaitymo laikas : 394.788
 10000000 irasu suskirstymo i grupes laikas: 84.252
 10000000 sugrupuotu studentu isvedimas i du naujus failus: 155.659
+
 ---------------
 
 # v0.2
