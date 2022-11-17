@@ -48,7 +48,7 @@ Duomenų kiekis | Pirmoji strategija | Antroji strategija | Trečioji strategija
 1000000        |      16.4427       |        -           |      11.4213         |  
 10000000       |      194.89        |        -           |      135.975         |   
 
-   Iš pirmųjų antrosios strategijų rezultatų galima matyti, kad padidinus duomenų kiekį dešimt kartų, laikas pailgėja apie 100 kartu, tai reiškia, kad rūšiavimas ir dalijimas su milijonu duomenų užtruktų ne mažiau nei 30 valandų, todėl tikslūs laikai lentelėje nėra pateikti.
+Iš pirmųjų antrosios strategijų rezultatų galima matyti, kad padidinus duomenų kiekį dešimt kartų, laikas pailgėja apie 100 kartu, tai reiškia, kad rūšiavimas ir dalijimas su milijonu duomenų užtruktų ne mažiau nei 30 valandų, todėl tikslūs laikai lentelėje nėra pateikti.
 
 
 
