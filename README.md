@@ -45,10 +45,9 @@ Duomenų kiekis | Pirmoji strategija | Antroji strategija | Trečioji strategija
 1000           |      0.0128781     |     0.108993       |      0.0090386       |       
 10000          |      0.146756      |     10.3373        |      0.108304        |   
 100000         |      1.56781       |     1340.93        |      1.23758         |  
-1000000        |      16.4427       |        - [^1]      |      11.4213         |  
-10000000       |      194.89        |        - [^1]      |      135.975         |   
-
-[^1]: Iš pirmųjų antrosios strategijų rezultatų galima matyti, kad padidinus duomenų kiekį dešimt kartų, laikas pailgėja apie 100 kartu, tai reiškia, kad rūšiavimas ir dalijimas su milijonu duomenų užtruktų ne mažiau nei 30 valandų, todėl tikslūs laikai lentelėje nėra pateikti.
+1000000        |      16.4427       |        -           |      11.4213         |  
+10000000       |      194.89        |        -           |      135.975         |   
+> Iš pirmųjų antrosios strategijų rezultatų galima matyti, kad padidinus duomenų kiekį dešimt kartų, laikas pailgėja apie 100 kartu, tai reiškia, kad rūšiavimas ir dalijimas su milijonu duomenų užtruktų ne mažiau nei 30 valandų, todėl tikslūs laikai lentelėje nėra pateikti.
 
 Šioje lentelėje yra pateikiamos laiko informacijos, kiek užtrunka surūšiuoti duomenis ir jiems pritaikyti vieną iš strategijų naudojant list konteinerį.
 
