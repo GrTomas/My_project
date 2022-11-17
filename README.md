@@ -3,7 +3,7 @@
 
 Programos versija (v1.0) papildo versiją (v0.4).
 
-v1.0 ši programos versija leidžia palyginti 3 skirtingas duomenų grupavimo strategijas, skirstant juos į "galvočius" ir "nuskriaustukus", kai programa yra testuojama. Pirmosios dvi strategijos yra daromos su vector ir list konteineriais, o trečioji strategija yra realizuota tik vector konteineriui. Strategijų aprašymai ir trumpi kodų fragmentai nurodantys stategijas vector konteineriui:
+v1.0 ši programos versija leidžia palyginti 3 skirtingas duomenų grupavimo strategijas, skirstant juos į "galvočius" ir "nuskriaustukus", kai programa yra testuojama. Pirmosios dvi strategijos yra daromos su vector ir list konteineriais, o trečioji strategija yra realizuota tik vector konteineriui. Strategijų aprašymai ir trumpi kodų fragmentai nurodantys strategijas vector konteineriui:
 
 Prieš pradedant naudoti grupavimo strategijas, duomenys yra surūšiuojami didėjimo tvarka pagal vidurkį ir jeigu jis vienodas, tada pagal medianą.
 * Pirmoji strategija: duomenys skirstomi į "galvočius" ir "nuskriaustukus" dedant juos į skirtingus konteinerius prieš tai patikrinant ar jų galutinis įvertinimas pagal vidurkį yra didesnis ar mažesnis už 5.
@@ -68,7 +68,7 @@ Duomenų kiekis | Pirmoji strategija | Antroji strategija |
 
 * Iš antros lentelės galime palyginti pirmąją ir antrąją strategiją. Pirmoji strategija užėmė daugiau atminties ir buvo lėtesnė už antrąją strategiją, todėl ši strategija yra prastesnė list duomenų konteineriui. Antroji strategija yra daug optimalesnė, ji yra daug greitesnė, o taip pat ir užimanti mažiau operatyviosios atminties.
 
-* Paskutinis dalykas kurį galime palyginti tai pačius duomenų konteinerius. Greičiausias būdas, buvo naudoti list duomenų konteinerė su antrąja strategija. Taip pat ir vector trečioji strategija yra visai gera dirbant su duomenimis, bet list duomenų konteineris išlieka greičiausias.
+* Paskutinis dalykas kurį galime palyginti tai pačius duomenų konteinerius. Greičiausias būdas, buvo naudoti list duomenų konteinerį su antrąja strategija. Taip pat ir vector trečioji strategija yra visai gera dirbant su duomenimis, bet list duomenų konteineris išlieka greičiausias.
 
 --------------
 
@@ -106,8 +106,61 @@ Duomenų kiekis | Bendras laikas (vector) | Bendras laikas (list) | Skirtumas ta
 
 Programos versija (v0.3) papildo versiją (v0.2).
 
-v0.3 programos versija leidžia pasirinkus, kad duomenys yra imami iš failo, pasirinkti, kad failai būtų sugeneruoti atsitiktinai ir į ekraną būtų išvedamas kiek laiko užtruks kiekvieno failo sukūrimas, jo nuskaitymas, padalinimas į 2 dalis ir išvedimas į naujus failus. Prieš sukuriant duomenis vartotojas yra paklausiamas koks namų darbų kiekis turėtų būti sukurtuose failuose. Tada failas yra sukuriamas su nurodytu namų darbų skaičiumi ir nuskaitomas naudojantis v0.2 programos versijai sukurta nuskaitymo funkcija. Galiausiai duomenys yra suskirstomi į pirmuosius ir antruosius. Pirmieji yra duomenys, kur žmogaus galutinis įvertinimas (pagal vidurkį) yra didesnis už 5, o antrieji – mažesnis. Tada panaikinamas bendrų duomenų failų vektorius. Galiausiai pirmieji ir antrieji yra išvedami į atskirus failus pavadinimais „galvociai.txt“ ir „nuskriaustukai.txt“. Kiekvienas programos veikimo etapo laikas yra matuojamas ir išvedamas vartotojui į ekraną. Pasinaudojus šia program
+v0.3 programos versija leidžia pasirinkus, kad duomenys yra imami iš failo, pasirinkti, kad failai būtų sugeneruoti atsitiktinai ir į ekraną būtų išvedamas kiek laiko užtruks kiekvieno failo sukūrimas, jo nuskaitymas, padalinimas į 2 dalis ir išvedimas į naujus failus. Prieš sukuriant duomenis vartotojas yra paklausiamas koks namų darbų kiekis turėtų būti sukurtuose failuose. Tada failas yra sukuriamas su nurodytu namų darbų skaičiumi ir nuskaitomas naudojantis v0.2 programos versijai sukurta nuskaitymo funkcija. Galiausiai duomenys yra suskirstomi į pirmuosius ir antruosius. Pirmieji yra duomenys, kur žmogaus galutinis įvertinimas (pagal vidurkį) yra didesnis už 5, o antrieji – mažesnis. Tada panaikinamas bendrų duomenų failų vektorius. Galiausiai pirmieji ir antrieji yra išvedami į atskirus failus pavadinimais „galvociai.txt“ ir „nuskriaustukai.txt“. Kiekvienas programos veikimo etapo laikas yra matuojamas ir išvedamas vartotojui į ekraną. Pasinaudojus šia programa ir pasirinkus namų darbų skaičių 5, galime matyti tokius sukurtus duomenis, rezultatus ir laiką. Atsitiktinai žemiau pavaizduota po 5 eilutes iš sukurtų duomenų, galvočiai, nuskriaustukai ir atlikimo laikas (su 1000 duomenų):
 
+Vardas  | Pavarde  | ND1 | ND2 | ND3 | ND4 | ND5 | EGZ  |
+--------|----------|-----|-----|-----|-----|-----|------|
+Vardas1 | Pavarde1 |  5  |  5  |  8  |  3  |  10 |  7   |
+Vardas2 | Pavarde2 |  6  |	9  | 5   | 5   |   8 |  9   |
+Vardas3 | Pavarde3 | 9	 | 3 | 6 | 2 | 10 | 1    |
+Vardas4 | Pavarde4 | 1 | 7 | 1 | 5 | 7 | 5 |
+Vardas5 | Pavarde5 | 4 | 2 | 3 | 3 | 1 | 2 |
+
+Vardas | Pavarde | Galutinis (vid.) | Galutinis (med.)  |
+-------|---------|------------------|-------------------|
+Vardas1      |       Pavarde1      |        6.68    |            6.20                
+Vardas2       |      Pavarde2       |       8.04      |          7.80                
+Vardas7         |    Pavarde7   |           9.36      |          9.20                
+Vardas9      |       Pavarde9      |        6.44           |     6.20                
+Vardas12      |      Pavarde12        |     5.32           |     5.80       
+
+Vardas      |        Pavarde      |       Galutinis (vid.)   | Galutinis (med.) |
+------------|---------------------|--------------------------|------------------|
+Vardas3      |       Pavarde3     |       3.00       |         3.00                
+Vardas4        |     Pavarde4      |      4.68          |      5.00                
+Vardas5        |     Pavarde5       |     2.24            |    2.40                
+Vardas6       |      Pavarde6        |    4.72        |        4.40                
+Vardas8        |     Pavarde8       |     4.68      |          3.80             
+
+
+1000 irasu failo sukurimas: 0.0345103   
+Failo is 1000 irasu nuskaitymo laikas : 0.0373514   
+1000 irasu suskirstymo i grupes laikas: 0.0044843   
+1000 sugrupuotu studentu isvedimas i du naujus failus: 0.0161059    
+
+--------------------------------
+
+Taip pat žemiau galite pamatyti ir su didesniais duomenų kiekiais atliktus programos rezultatus:
+
+10000 irasu failo sukurimas: 0.283629
+Failo is 10000 irasu nuskaitymo laikas : 0.375472
+10000 irasu suskirstymo i grupes laikas: 0.0493201
+10000 sugrupuotu studentu isvedimas i du naujus failus: 0.149311
+
+100000 irasu failo sukurimas: 2.80279
+Failo is 100000 irasu nuskaitymo laikas : 3.89738
+100000 irasu suskirstymo i grupes laikas: 0.501119
+100000 sugrupuotu studentu isvedimas i du naujus failus: 1.56041
+
+1000000 irasu failo sukurimas: 28.2785
+Failo is 1000000 irasu nuskaitymo laikas : 38.8554
+1000000 irasu suskirstymo i grupes laikas: 5.16286
+1000000 sugrupuotu studentu isvedimas i du naujus failus: 15.3076
+
+10000000 irasu failo sukurimas: 277.656
+Failo is 10000000 irasu nuskaitymo laikas : 394.788
+10000000 irasu suskirstymo i grupes laikas: 84.252
+10000000 sugrupuotu studentu isvedimas i du naujus failus: 155.659
 ---------------
 
 # v0.2
